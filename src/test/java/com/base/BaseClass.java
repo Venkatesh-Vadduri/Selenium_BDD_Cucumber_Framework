@@ -84,6 +84,7 @@ public class BaseClass {
     }
 
     public static WebDriver getDriver() {
+
         return driver;
     }
 }
