@@ -12,6 +12,7 @@ public class RegisterPage {
     public WebDriver driver;
     public ActionDriver actionDriver;
 
+
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
         this.actionDriver = new ActionDriver(driver);

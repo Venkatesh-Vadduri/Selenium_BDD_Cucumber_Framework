@@ -4,6 +4,7 @@ import com.base.BaseClass;
 import com.pages.AccountSuccessPage;
 import com.pages.HomePage;
 import com.pages.RegisterPage;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -44,7 +45,7 @@ public class MyStepdefs {
     public void userEntersDetailsIntoBelowFields() {
         registerpg.enterFirstName("Venkatesh");
         registerpg.enterLastName("Vadduri");
-        registerpg.enterEmail("abctest@gmail.com");
+        registerpg.enterEmail(BaseClass.generateEmail());
         registerpg.enterPhone("1234567890");
         registerpg.enterPassword("Test@123");
         registerpg.enterConfirmPassword("Test@123");
@@ -69,4 +70,10 @@ public class MyStepdefs {
         Assert.assertEquals(actSucpg.getPageHeading3(), "If you have ANY questions about the operation of this online shop, please e-mail the store owner.");
 
     }
+
+    @And("User selects Newsletter")
+    public void userSelectsNewsletter() {
+        registerpg.clickOnSubscribeYes();
+    }
+
 }

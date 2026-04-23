@@ -10,13 +10,11 @@ import org.junit.runner.RunWith;
 @CucumberOptions(   plugin={"pretty","html:target/CucumberReports/CucumberReport.html"}, glue={"com.stepDef","com.base"},
                     features= "features/Register.feature",
                     monochrome=true,
-                    tags = "@SmokeTest"
+                    tags = "@SmokeTest1"
 
                 )
 
 
 public class RunCucumberTest {
-
-
 
 }
