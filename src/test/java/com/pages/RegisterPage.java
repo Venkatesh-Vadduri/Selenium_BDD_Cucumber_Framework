@@ -50,6 +50,22 @@ public class RegisterPage {
     @FindBy(xpath = " //input[@class='btn btn-primary']")
     private WebElement ContinueButton;
 
+    @FindBy(xpath = " //div[text()='First Name must be between 1 and 32 characters!']")
+    private WebElement frstnamewarning;
+
+    @FindBy(xpath = " //div[text()='Last Name must be between 1 and 32 characters!']")
+    private WebElement lastnamewarning;
+
+    @FindBy(xpath = " //div[text()='E-Mail Address does not appear to be valid!']")
+    private WebElement emailwarning;
+
+    @FindBy(xpath = " //div[text()='Telephone must be between 3 and 32 characters!']")
+    private WebElement phonewarning;
+
+    @FindBy(xpath = " //div[text()='Password must be between 4 and 20 characters!']")
+    private WebElement passwordwarning;
+
+
 
     //Method to Enter the FirstName
     public void enterFirstName(String Firstname) {
