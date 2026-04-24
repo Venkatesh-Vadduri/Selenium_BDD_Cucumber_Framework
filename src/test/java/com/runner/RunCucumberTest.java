@@ -7,7 +7,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 
-@CucumberOptions(   plugin={"pretty","html:target/CucumberReports/CucumberReport.html"}, glue={"com.stepDef","com.base"},
+@CucumberOptions(   plugin={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+                    glue={"com.stepDef","com.base"},
+
                     features= "features/Register.feature",
                     monochrome=true,
                     tags = "@SmokeTest1"

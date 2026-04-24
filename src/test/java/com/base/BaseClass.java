@@ -3,13 +3,18 @@ package com.base;
 import com.actiondriver.ActionDriver;
 import com.utils.LoggerManager;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -23,6 +28,7 @@ public class BaseClass {
     public static WebDriver driver;
     public static Properties prop;
     public static Date date;
+    public static File screenshot;
     public static final Logger logger = LoggerManager.getLogger(BaseClass.class);
 
 
@@ -93,20 +99,24 @@ public class BaseClass {
 
     }
 
+    @AfterStep
+    public void addScreenShot(Scenario screnario) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            screnario.attach(screenshot, "image/png", screnario.getName());
+
+    }
+
     public void staticWait(int seconds) {
 
         LockSupport.parkNanos(TimeUnit.SECONDS.toNanos(seconds));
     }
 
     public static Properties getProperties() {
-
         return prop;
     }
 
     public static WebDriver getDriver() {
-
         return driver;
-
     }
 
     public static String generateEmail() {
@@ -120,34 +130,3 @@ public class BaseClass {
     }
 
 }
-
-
-
-  /*  public static WebDriver getDriver() {
-        if (driver==null) {
-            System.out.println("Driver is not initialized");
-            throw new IllegalStateException("Driver is not initialized");
-        }
-        return driver;
-    }
-
-    public static ActionDriver getActionDriver() {
-        if (actionDriver==null) {
-            System.out.println("Driver is not initialized");
-            throw new IllegalStateException("Driver is not initialized");
-        }
-        return actionDriver;
-    }*/
-
-
-
-//        Date date = new Date();
-//        String datestring = date.toString();
-//        String datestringwithoutspaces = datestring.replaceAll("\\s", "");
-//        String datewithoutcolons = datestringwithoutspaces.replaceAll("\\:", "");
-//        // remove all alphabetic letters from the generated email (keeps digits and symbols)
-//        String datewithoutletters = datewithoutcolons.replaceAll("\\p{L}", "");
-//        String brandnewemail = "Venkatesh" + datewithoutletters + "@gmail.com";
-//        return brandnewemail;
-
-

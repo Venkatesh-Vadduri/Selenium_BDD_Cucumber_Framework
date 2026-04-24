@@ -14,7 +14,7 @@ public class HomePage {
     public ActionDriver actionDriver;
 
 
-    public  HomePage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         this.actionDriver = new ActionDriver(driver);
         PageFactory.initElements(driver, this);
     }
