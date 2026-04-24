@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 
                     features= "features/Register.feature",
                     monochrome=true,
-                    tags = "@SmokeTest1"
+                    tags = "@TC_RF_06"
 
                 )
 

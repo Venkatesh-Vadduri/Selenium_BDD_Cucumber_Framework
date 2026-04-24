@@ -100,9 +100,9 @@ public class BaseClass {
     }
 
     @AfterStep
-    public void addScreenShot(Scenario screnario) {
+    public void addScreenShot(Scenario scenario) {
             final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            screnario.attach(screenshot, "image/png", screnario.getName());
+        scenario.attach(screenshot, "image/png", scenario.getName());
 
     }
 

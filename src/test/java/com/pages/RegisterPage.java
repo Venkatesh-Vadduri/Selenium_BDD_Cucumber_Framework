@@ -65,6 +65,17 @@ public class RegisterPage {
     @FindBy(xpath = " //div[text()='Password must be between 4 and 20 characters!']")
     private WebElement passwordwarning;
 
+    @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+    private WebElement policywarning;
+
+    @FindBy(xpath = "//div[@class='list-group']/a[text()='Register']")
+    private WebElement registeroption;
+
+    @FindBy(xpath = "//h1[text()='Register Account']")
+    private WebElement registeracct;
+
+
+
 
 
     //Method to Enter the FirstName
@@ -118,6 +129,47 @@ public class RegisterPage {
     public void clickOnContinueButton() {
         actionDriver.click((WebElement) ContinueButton);
     }
+
+    //Method to Display the warning message for First Name field
+    public void displayFirstNameWarning() {
+        actionDriver.isDisplayed((WebElement) frstnamewarning);
+    }
+
+    //Method to Display the warning message for Last Name field
+    public void displayLastNameWarning() {
+        actionDriver.isDisplayed((WebElement) lastnamewarning);
+    }
+
+    //Method to Display the warning message for Email field
+    public void displayEmailWarning() {
+        actionDriver.isDisplayed((WebElement) emailwarning);
+    }
+
+    //Method to Display the warning message for phone field
+    public void displayPhoneWarning() {
+        actionDriver.isDisplayed((WebElement) phonewarning);
+    }
+
+    //Method to Display the warning message for password field
+    public void displayPasswordWarning() {
+        actionDriver.isDisplayed((WebElement) passwordwarning);
+    }
+
+    //Method to Display the warning message for policy field
+    public void displayPolicydWarning() {
+        actionDriver.isDisplayed((WebElement) policywarning);
+    }
+
+    //Method to click on Register Option
+    public void clickOnRegisterOption() {
+        actionDriver.click((WebElement) registeroption);
+    }
+
+    //Method to Display the warning message for policy field
+    public void displayRegisterAccount() {
+        actionDriver.isDisplayed((WebElement) registeracct);
+    }
+
 
 
 }

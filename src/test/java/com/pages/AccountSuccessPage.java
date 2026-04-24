@@ -32,6 +32,12 @@ public class AccountSuccessPage {
     @FindBy(xpath = " //a[text()='Continue']")
     private WebElement continueButton;
 
+    @FindBy(xpath = "(//input[@name='newsletter'])[1]")
+    private WebElement newsletteryesoption;
+
+    @FindBy(xpath = "(//input[@name='newsletter'])[2]")
+    private WebElement newsletternooption;
+
 
 
 
@@ -50,8 +56,18 @@ public class AccountSuccessPage {
         return actionDriver.getText(successHeading3);
     }
 
-    public void clickOnContinueButton() {
+    public void clickOnContinueButtonInAccSuccessPage() {
         actionDriver.click(continueButton);
+    }
+
+    //method to check yes option is Displayed
+    public void getYesNewsLetterOption() {
+        actionDriver.isDisplayed((WebElement) newsletteryesoption);
+    }
+
+    //method to check No option is Displayed
+    public void getNoNewsLetterOption() {
+        actionDriver.isDisplayed((WebElement) newsletternooption);
     }
 
 }
