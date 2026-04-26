@@ -7,12 +7,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 
-@CucumberOptions(   plugin={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+@CucumberOptions(   plugin={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                            "rerun:target/failed_scenarios.txt"},
                     glue={"com.stepDef","com.base"},
 
-                    features= "features/Register.feature",
+                    features= "features/Login.feature",
                     monochrome=true,
-                    tags = "@TC_RF_06"
+                    tags = "@SmokeTest1"
 
                 )
 

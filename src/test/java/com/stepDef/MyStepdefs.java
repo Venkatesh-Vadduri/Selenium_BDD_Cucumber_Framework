@@ -2,12 +2,16 @@ package com.stepDef;
 
 import com.base.BaseClass;
 import com.pages.*;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+
+import java.io.IOException;
+import java.util.Map;
 
 
 public class MyStepdefs {
@@ -94,8 +98,8 @@ public class MyStepdefs {
 
     @And("User click on Subscribe unsubscribe Newsletter")
     public void userClickOnSubscribeUnsubscribeNewsletter() {
-             accountPg = new AccountPage(BaseClass.getDriver());
-             accountPg.clickOnNewsletter();
+        accountPg = new AccountPage(BaseClass.getDriver());
+        accountPg.clickOnNewsletter();
     }
 
     @Then("User click Continue button on Account Success page")
@@ -106,7 +110,7 @@ public class MyStepdefs {
 
     @Then("User should should See Newsletter subscribe Yes Option")
     public void userShouldShouldSeeNewsletterSubscribeYesOption() {
-     actSucpg.getYesNewsLetterOption();
+        actSucpg.getYesNewsLetterOption();
     }
 
     @Then("User should should See Newsletter subscribe NO Option")
@@ -116,35 +120,61 @@ public class MyStepdefs {
 
     @Given("User click on My Account Dropdown in the Home page")
     public void userClickOnMyAccountDropdownInTheHomePage() {
-     homepg = new HomePage(BaseClass.getDriver());
-     homepg.clickMyAccountDropdown();
+        homepg = new HomePage(BaseClass.getDriver());
+        homepg.clickMyAccountDropdown();
     }
 
     @And("User click on Register Option in the Home page")
     public void userClickOnRegisterOptionInTheHomePage() {
-       homepg.clickRegisterOption();
+        homepg.clickRegisterOption();
     }
 
     @And("User click on Login Option in the Home page")
     public void userClickOnLoginOptionInTheHomePage() {
-      homepg.clickLoginOption();
+        homepg.clickLoginOption();
     }
 
 
     @When("User clicks on Continue Button on New Customer page")
-    public void userClicksOnContinueButtonOnNewCustomerPage() {
+    public void userClicksOnContinueButtonOnNewCustomerPage() throws IOException {
         loginPg = new LoginPage(BaseClass.getDriver());
         loginPg.clickonContinueButton();
     }
 
     @Then("User click on Register Option")
     public void userClickOnRegisterOption() {
-       registerpg = new RegisterPage(BaseClass.getDriver());
-       registerpg.clickOnRegisterOption();
+        registerpg = new RegisterPage(BaseClass.getDriver());
+        registerpg.clickOnRegisterOption();
     }
 
     @Then("User Able to See Register Account page")
     public void userAbleToSeeRegisterAccountPage() {
         registerpg.displayRegisterAccount();
     }
+
+    @When("User enters details into below fields using Data Table")
+    public void userEntersDetailsIntoBelowFieldsUsingDataTable(DataTable dataTable) {
+
+        Map<String, String> data = dataTable.asMap(String.class, String.class);
+        registerpg.enterFirstName(data.get("firstName"));
+        registerpg.enterLastName(data.get("lastName"));
+        registerpg.enterEmail(BaseClass.generateEmail());
+        registerpg.enterPhone(data.get("telephone"));
+        registerpg.enterPassword(data.get("password"));
+        registerpg.enterConfirmPassword(data.get("password"));
+
+    }
+
+    @And("User clicks on Login button")
+    public void userClicksOnLoginButton() {
+        loginPg.clickonLoginButton();
+    }
+
+    @When("User enters (.*) and (.*)$")
+    public void userEntersEmailAndPassword(String email, String password) throws IOException {
+        loginPg = new LoginPage(BaseClass.getDriver());
+        loginPg.enterEmail(email);
+        loginPg.enterPassword(password);
+    }
+
 }

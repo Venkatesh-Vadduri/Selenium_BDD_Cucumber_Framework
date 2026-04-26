@@ -11,7 +11,11 @@ Feature: Register functionality
   @TC_RF_02
   Scenario: Verify Registering an Account by providing all the fields
     Given User navigates to Registration page
-    When User enters details into below fields
+    When User enters details into below fields using Data Table
+      |firstName	|Venkatesh						|
+      |lastName		|Vadduri						|
+      |telephone	|1234567890						|
+      |password		|Test@123						|
     And User selects Privacy Policy
     And User clicks on Continue button
     Then User account should get created successfully
@@ -58,3 +62,5 @@ Feature: Register functionality
     And User click on Login Option in the Home page
     Then User click on Register Option
     Then User Able to See Register Account page
+
+

@@ -1,9 +1,11 @@
 Feature: Login functionality
 
-  @SmokeTest
-  Scenario: Login with invalid credentials
+  @SmokeTest1
+  Scenario Outline: Login with valid credentials
     Given User navigates to login page
-    When User enters invalid email address into email field
-    And User enters invalid password "1234567890" into password field
+    When User enters <Email> and <Password>
     And User clicks on Login button
-    Then User should get a proper warning message about credentials mismatch
+    Examples:
+      | Email                     | Password |
+      | ramuvadduri@gmail.com     | Test@123 |
+      | rajeshvadduri@gmail.com   | Test@123 |

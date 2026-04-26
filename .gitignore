@@ -1,7 +1,5 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 .kotlin
 
 ### IntelliJ IDEA ###
@@ -40,3 +38,9 @@ build/
 .DS_Store
 /logs/
 /src/test/resources/
+!/src/test/resources/testdata/
+!/src/test/resources/extent-config.xml
+!/src/test/resources/log4j2.xml
+!/src/test/resources/config.properties
+!/src/test/resources/extent.properties
+!/target/failed_scenarios.txt
